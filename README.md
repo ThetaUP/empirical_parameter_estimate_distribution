@@ -11,4 +11,25 @@ estimates and then drawing estimates from that distribution.
 ## approach description
 For simplicity, the method will be described in the context of simple linear regression of the form yi = β0 + β1xi + ϵ
 ### unidimensional estimate distributions
+Consider a dataset with n observations and p explanatory variables:
+| p=1  | ... | p=p  |
+|------|-----|------|
+| X1,1 | ... | X1,p |
+| X2,1 | ... | X2,p |
+| ...  | ... | ...  |
+| Xn,1 | ... | Xn,p |
+
+The approach can be summarized in the following steps.
+1. create m bootstrap samples (with replacement) of the original data
+    - each bootstrap sample will have the same dimensions as the original data
+2. for each bootstrap sample fit a model (in our case simple linear regression)
+3. add the β0 estimate and the β1 estimate to their corresponding arrays
+4. calculate the means and standard deviations of the two arrays, by this we get:
+    - μβ0, μβ1
+    - σβ0, σβ1
+5. draw the final β0 and β1 estimates from their respective normal distributions with the following parameters
+    - ~N(μβ0,σβ0*α)
+    - ~N(μβ1,σβ1*α)
+      * note that the α parameter is a hyperparameter which aims to either increase or decrease the variance of the empirical distributions
+6. build a final predictive model with the parameter estimates from step 5.)
 
