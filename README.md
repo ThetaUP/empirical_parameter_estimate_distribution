@@ -1,5 +1,3 @@
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML"></script>
-
 # empirical parameter estimate distribution
 This repostiory is about the topic of a master thesis of Jakub Liu under the supervision of dr hab. inż. Tomasz Suchocki.
 
@@ -11,6 +9,6 @@ to countermend this phenomenon. This thesis aims to explore the properties of a 
 estimates and then drawing estimates from that distribution.
 
 ## approach description
-For simplicity, the method will be described in the context of simple linear regression of the form \(y = beta0 + beta1x \)
+For simplicity, the method will be described in the context of simple linear regression of the form yi = β0 + β1xi + ϵ
 ### unidimensional estimate distributions
 
