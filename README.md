@@ -32,4 +32,13 @@ The approach can be summarized in the following steps.
     - ~N(μβ1,σβ1*α)
       * note that the α parameter is a hyperparameter which aims to either increase or decrease the variance of the empirical distributions
 6. build a final predictive model with the parameter estimates from step 5.)
+The hope is that the final model from step 6.) will exhibit a lower prediction error on previously unseen data, compared a standard linear
+regression model.
+
+### multivariate estimate distribution
+This approach is highly similar to the univariate approach with one key difference. We don't estimate the distributions of the parameters
+as independent unidimensional distributions, but model it as a d-dimensional normal, where d is the number of parameter estimates. In our exemplary
+case of simple linear regression, the d-dimensional normal is a 2-dimensional normal distribution, due to the fact that we have 2 parameters (β0, β1)
+to estimate. More formally, based on the β0 and β1 arrays (that come from the m bootstrap samples), we calculate the sample covariance matrix ∑, which
+is the 2nd (after the vector of means) parameter of the 2-dimensional normal distribution.
 
