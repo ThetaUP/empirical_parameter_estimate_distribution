@@ -42,3 +42,7 @@ case of simple linear regression, the d-dimensional normal is a 2-dimensional no
 to estimate. More formally, based on the β0 and β1 arrays (that come from the m bootstrap samples), we calculate the sample covariance matrix ∑, which
 is the 2nd (after the vector of means) parameter of the 2-dimensional normal distribution.
 
+
+## usage
+We supply some demonstration code. The script ___ generates some exemplary data. Then the procedure is tested on this simulated dataset. The function definitions
+are located in the file mod.R
