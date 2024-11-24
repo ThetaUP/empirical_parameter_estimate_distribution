@@ -44,5 +44,5 @@ is the 2nd (after the vector of means) parameter of the 2-dimensional normal dis
 
 
 ## usage
-We supply some demonstration code. The script ___ generates some exemplary data. Then the procedure is tested on this simulated dataset. The function definitions
+We supply some demonstration code. The script example_usage.R generates some exemplary data. Then the procedure is tested on this simulated dataset. The function definitions
 are located in the file mod.R
