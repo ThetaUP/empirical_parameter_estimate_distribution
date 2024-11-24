@@ -18,20 +18,38 @@ MSE <- function(y_true, y_pred){
     return(res)
 }
 
-Bootstrap_Model <- function(X,Y,n,alpha){
+Bootstrap_Model <- function(X,Y,n_iter,alpha,print_progress = FALSE){
     p <- ncol(X)
     n <- nrow(X)
-    coefs <- matrix(rep(0,n*(p+1)), nrow = n, ncol = (p+1))
+    coefs <- matrix(rep(0,n_iter*(p+1)), nrow = n_iter, ncol = (p+1))
     data <- cbind(X,Y)
 
     # get coefficient estimates from bootstrap samples
-    for(i in 1:n){
-        data_boot <- data[sample(1:nrow(data), nrow(data), replace = T),]
-        model_boot <- lm(data_boot[,ncol(data_boot)] ~ data_boot[,1:(ncol(data_boot)-1)])
-        coefs_boot <- summary(model_boot)$coefficients
 
-        for(j in 1:(p+1)){
-            coefs[i,j] <- coefs_boot[j]
+    # loop with progress print (the if statement must be outside of the loop)
+    if(print_progress == TRUE){
+        for(i in 1:n_iter){
+
+            print(paste0(round(i/n_iter,3)*100.00, "%"))
+            data_boot <- data[sample(1:nrow(data), nrow(data), replace = T),]
+            model_boot <- lm(data_boot[,ncol(data_boot)] ~ data_boot[,1:(ncol(data_boot)-1)])
+            coefs_boot <- summary(model_boot)$coefficients
+
+            for(j in 1:(p+1)){
+                coefs[i,j] <- coefs_boot[j]
+            }
+        }
+    }
+
+    else if(print_progress == FALSE){
+        for(i in 1:n_iter){
+            data_boot <- data[sample(1:nrow(data), nrow(data), replace = T),]
+            model_boot <- lm(data_boot[,ncol(data_boot)] ~ data_boot[,1:(ncol(data_boot)-1)])
+            coefs_boot <- summary(model_boot)$coefficients
+
+            for(j in 1:(p+1)){
+                coefs[i,j] <- coefs_boot[j]
+            }
         }
     }
 
